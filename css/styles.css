@@ -47,7 +47,7 @@
             width: 50%; 
         }
 
-        @media screen and (max-width: 800px) {
+        @media screen and (min-width: 100px) {
             .ya {
                 zoom: 200%;
             }
@@ -56,6 +56,18 @@
             }
             .hmu {
                 zoom: 200%;
+            }
+          }
+
+          @media screen and (min-width: 800px) {
+            .ya {
+                zoom: 100%;
+            }
+            .boi {
+                zoom: 100%;
+            }
+            .hmu {
+                zoom: 100%;
             }
           }
           
