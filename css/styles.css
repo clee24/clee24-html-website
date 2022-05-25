@@ -15,6 +15,40 @@
             text-align:center
         }
         
-        div {
+        .top {
             text-align:center
         }
+        .small_links {     
+            margin:0 auto;
+            width: 50%;
+            text-align:center;
+            border: solid 2px;
+            border-color: white;
+        }
+        .big_links {
+            margin:0 auto;
+            width: 30%;
+            text-align:center;
+            border: solid 2px;
+            border-color: white;
+        }
+
+        /* unvisited link */
+        a:link {
+        color: black;
+        }
+  
+         /* visited link */
+        a:visited {
+        color:teal;
+        }
+  
+        /* mouse over link */
+        a:hover {
+        color: hotpink;
+        }
+  
+  /* selected link */
+  a:active {
+    color: white;
+  }
