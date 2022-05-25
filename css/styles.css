@@ -46,7 +46,19 @@
             margin-right: auto;
             width: 50%; 
         }
-        
+
+        @media screen and (max-width: 800px) {
+            .ya {
+                zoom: 200%;
+            }
+            .boi {
+                zoom: 200%;
+            }
+            .hmu {
+                zoom: 200%;
+            }
+          }
+          
         td {
             padding: 0 15px;
         }
