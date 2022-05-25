@@ -48,9 +48,11 @@
         @media screen and (min-width: 800px) {
             .boi {
                 width: 50%;
+                zoom: 50%;
             }
             .ya {
                 width: 50%;
+                zoom: 50%;
             }
         }
 
