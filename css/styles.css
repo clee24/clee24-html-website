@@ -37,14 +37,21 @@
 
         .ya {
             margin-left: auto;
-            margin-right: auto;
-            width: 50%;  
+            margin-right: auto;  
         }
 
         .boi {
             margin-left: auto;
             margin-right: auto;
-            width: 50%; 
+        }
+
+        @media screen and (min-width: 800px) {
+            .boi {
+                width: 50%;
+            }
+            .ya {
+                width: 50%;
+            }
         }
 
         table { width: 100%; }
