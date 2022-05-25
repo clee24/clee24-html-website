@@ -47,32 +47,7 @@
             width: 50%; 
         }
 
-        @media screen and (min-width: 100px) {
-            .ya {
-                -webkit-text-size-adjust: none;
-                zoom: 200%;
-            }
-            .boi {
-                -webkit-text-size-adjust: none;
-                zoom: 200%;
-            }
-            .hmu {
-                -webkit-text-size-adjust: none;
-                zoom: 200%;
-            }
-          }
-
-          @media screen and (min-width: 800px) {
-            .ya {
-                zoom: 100%;
-            }
-            .boi {
-                zoom: 100%;
-            }
-            .hmu {
-                zoom: 100%;
-            }
-          }
+        table { width: 100%; }
           
         td {
             padding: 0 15px;
@@ -101,3 +76,21 @@
         a:active {
         color: white;
         }
+
+        @media only screen and (min-width: 300px) {
+            table {
+              zoom: 1.7;
+            }
+            .hmu {
+                zoom: 1.7;
+              }
+          }
+      
+          @media only screen and (min-width: 800px) {
+            table {
+              zoom: 1;        
+            }
+            .hmu {
+                zoom: 1.7;
+              }
+          }
