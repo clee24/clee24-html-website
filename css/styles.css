@@ -1,6 +1,13 @@
         body {
             background-color: bisque;
+            animation: fadebackground 10s;
         }
+
+          @keyframes fadebackground {
+            from {background-color: black;}
+            to {background-color: bisque;}
+          }
+
         hr {
             background-color: white;
             border-style: none;
@@ -91,3 +98,4 @@
         a:active {
         color: white;
         }
+
