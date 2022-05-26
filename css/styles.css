@@ -1,6 +1,6 @@
+
         body {
             background-color: bisque;
-            animation: fadebackground 10s;
         }
 
           @keyframes fadebackground {
@@ -51,13 +51,8 @@
             text-align:center
         }
         
-        img {
-            border-radius: 50%;
-            border: 2px solid white;
-          }
-
         p {
-            text-align:center
+            text-align:center;
         }
         
         .top {
@@ -124,7 +119,7 @@
   
          /* visited link */
         a:visited {
-        color:teal;
+        color:pink;
         }
   
         /* mouse over link */
