@@ -8,16 +8,54 @@
             to {background-color: bisque;}
           }
 
+          .fade-in {
+            animation: fadeIn ease 6s;
+            -webkit-animation: fadeIn ease 6s;
+            -moz-animation: fadeIn ease 6s;
+            -o-animation: fadeIn ease 6s;
+            -ms-animation: fadeIn ease 6s;
+          }
+
+          @keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
+          }
+          
+          @-moz-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
+          }
+          
+          @-webkit-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
+          }
+          
+          @-o-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
+          }
+          
+          @-ms-keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
+          }
+
         hr {
             background-color: white;
             border-style: none;
-            height: 1px;
+            height: 2px;
         }
         
         h1 {
             text-align:center
         }
         
+        img {
+            border-radius: 50%;
+            border: 2px solid white;
+          }
+
         p {
             text-align:center
         }
