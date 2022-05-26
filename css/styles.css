@@ -25,6 +25,7 @@
             text-align:center;
             border: solid 2px;
             border-color: white;
+            border-radius: 10px;
         }
         .big_links {
             margin:0 auto;
@@ -33,6 +34,7 @@
             border: solid 2px;
             border-color: white;
             max-width: 150px;
+            border-radius: 10px;
         }
 
         .ya {
@@ -56,12 +58,15 @@
 
         table { 
         width: 100%; 
-        text-align:center
+        text-align:center;
+        border-collapse: separate; 
+        border-spacing: 5px 15px;
         }
-          
-        td {
-            padding: 0 15px;
-        }
+
+        th, td {
+            border: none;
+            border-radius: 10px;
+          }
 
         .hmu {
             list-style-type:none;
