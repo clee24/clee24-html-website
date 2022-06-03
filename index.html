@@ -1,39 +1,241 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Chris Lee</title>
-        <link rel="stylesheet" href="css/styles.css">
-        <meta property='og:title' content='Chris Lee'/>
-        <meta property='og:image' content='websitephoto.png'/>
-        <meta='og:description' content='HTML Website'/>
-        <meta property='og:url' content='https://clee24.github.io/'/>
-        <meta property='og:image:width' content='1200' />
-        <meta property='og:image:height' content='627' />
-        <!-- TYPE BELOW IS PROBABLY: 'website' or 'article' or look on https://ogp.me/#types -->
-        <meta property="og:type" content='website'/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body style="background-color: bisque; animation: fadebackground 10s;">
-        <div class="top">
-            <div class="fade-in">
-                <img width="250" src="chrisleelmao.png">
+<!--  
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Chris Lee</title>
+            <link rel="stylesheet" href="css/styles.css">
+            <link rel="icon" href="css/favicon.ico">
+        </head>
+        <body>
+            <div class="top">
+                <h1>I'm Chris.</h1>
+                <p>a programmer.</p>
             </div>
-            <h1>Chris Lee</h1>
-            <p><em>we <b>out here</b></em> </p>
-            <br>
-        </div>
-        <div class="small_links">
-            <p><a href="https://media-exp1.licdn.com/dms/document/C4D2DAQHyZkLhntTrXQ/profile-treasury-document-pdf-analyzed/0/1649239600937?e=1654128000&v=beta&t=sHH7HRltr62rT7TiJJC7Cq_reg8b_lQJ590heChTsTg">Resume</a> | <a href="https://www.linkedin.com/in/chriswinlee/">Linkedin</a> | <a href="https://www.instagram.com/yelli_feesh/">Instagram</a> | <a href="https://github.com/clee24">Github</a> | <a href="https://wooster.edu/">School</a> | <a href="https://www.artiflexmfg.com/">Company</a></p>
-        </div>
-        <hr>
-        <div class="big_links">
-            <p><a href="poems.html">Writing</a></h3>
-            <p><a href="other.html">Other Projects</a></h3>
-            <p><a href="contact.html">Contact Me</a></h3>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
+            <div class="middle">
+            </div>
+            <div class="bottom">  
+            </div>
+            </body>
+    </html>
+    --> 
+    
+    
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>Chris Lee</title>
+    <link rel="icon" href="css/favicon.ico">
+    <meta property='og:image' content='websitephoto.png'/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+    <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+    </head>
+    <body>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibGVlY2hyaXM1MDAwIiwiYSI6ImNqZzZwcWxtYzB1MTkycXJudW1uNzVpbjgifQ.XtQDTCOBj4JdgGfDRACcrg';
+    const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/leechris5000/cl3ym86sh002a14mg7wrc4qhx',
+    center: [0, 0],
+    zoom: 1
+    });
+    
+    map.on('load', () => {
+// Load an image from an external URL.
+map.loadImage(
+'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
+(error, image) => {
+if (error) throw error;
+ 
+// Add the image to the map style.
+map.addImage('cat', image);
+ 
+// Add a data source containing one point feature.
+
+
+map.addSource('point', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{
+'type': 'Feature',
+'geometry': {
+'type': 'Point',
+'coordinates': [-81.93703973990512,40.81398911837351]
+}
+}
+]
+}
+});
+
+map.addSource('pointa', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{
+'type': 'Feature',
+'geometry': {
+'type': 'Point',
+'coordinates': [-122.48287889370994,37.76739138046162]
+}
+}
+]
+}
+});
+
+// Add a layer to use the image to represent the data.
+map.addLayer({
+'id': 'pointss',
+'type': 'symbol',
+'source': 'pointa', // reference the data source
+'layout': {
+'icon-image': 'cat', // reference the image
+'icon-size': 0.2
+}
+});
+ 
+// Add a layer to use the image to represent the data.
+map.addLayer({
+'id': 'points',
+'type': 'symbol',
+'source': 'point', // reference the data source
+'layout': {
+'icon-image': 'cat', // reference the image
+'icon-size': 0.2
+}
+});
+}
+);
+
+map.on('click', 'pointss', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const description = e.features[0].properties.description;
+ 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML("San Francisco")
+.addTo(map);
+});
+
+
+map.on('click', 'points', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const description = e.features[0].properties.description;
+ 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML("Wooster")
+.addTo(map);
+});
+});
+    
+    // Center the map on the coordinates of any clicked circle from the 'circle' layer.
+    map.on('click', 'pointss', (e) => {
+    map.flyTo({
+    center: e.features[0].geometry.coordinates,
+    zoom: 13,
+    });
+    });
+
+    map.on('click', 'points', (e) => {
+    map.flyTo({
+    center: e.features[0].geometry.coordinates,
+    zoom: 13,
+    });
+    });
+     
+    map.on('click', (event) => {
+        const features = map.queryRenderedFeatures(event.point, {
+        layers: ['website'] // replace with your layer name
+      });
+      if (!features.length) {
+        return;
+      }
+      const feature = features[0];
+      const popup = new mapboxgl.Popup({ offset: [0, -15] })
+      .setLngLat(feature.geometry.coordinates)
+      .setHTML(
+        `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+      )
+      .addTo(map);
+    });
+    
+    // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
+    map.on('mouseenter', 'website', () => {
+    map.getCanvas().style.cursor = 'pointer';
+    });
+     
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'website', () => {
+    map.getCanvas().style.cursor = '';
+    
+    });
+    
+    </script>
+     
     </body>
-</html>
+    </html>
+    
+    <!--  
+    <html lang='en'>
+      <head>
+        <meta charset='utf-8' />
+        <title>Points on a map</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+        <style>
+          body { 
+            margin: 0; 
+            padding: 0; 
+          }
+          #map { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            width: 100%; 
+          }
+        </style>
+      </head>
+      <body>
+        <div id='map'></div>
+        <script>
+        // The value for 'accessToken' begins with 'pk...'
+        mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN'; 
+        const map = new mapboxgl.Map({
+          container: 'map',
+          // Replace YOUR_STYLE_URL with your style URL.
+          style: 'YOUR_STYLE_URL', 
+          center: [-87.661557, 41.893748],
+          zoom: 10.7
+        });
+    
+        // Code from the next step will go here.
+    
+        </script>
+      </body>
+    </html>
+    -->
