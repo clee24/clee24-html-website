@@ -93,10 +93,11 @@ map.loadImage(
 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
 (error, image) => {
 if (error) throw error;
- 
+
 // Add the image to the map style.
 map.addImage('cat', image);
  
+
 // Add a data source containing one point feature.
 
 
@@ -132,12 +133,26 @@ map.addSource('pointa', {
 }
 });
 
-
+map.addSource('pointb', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{
+'type': 'Feature',
+'geometry': {
+'type': 'Point',
+'coordinates': [-147.35062947665187,64.7505400696603]
+}
+}
+]
+}
+});
 
 
 // Add a layer to use the image to represent the data.
 map.addLayer({
-'id': 'pointss',
+'id': 'points',
 'type': 'symbol',
 'source': 'pointa', // reference the data source
 'layout': {
@@ -148,7 +163,7 @@ map.addLayer({
  
 // Add a layer to use the image to represent the data.
 map.addLayer({
-'id': 'points',
+'id': 'pointss',
 'type': 'symbol',
 'source': 'point', // reference the data source
 'layout': {
@@ -156,49 +171,20 @@ map.addLayer({
 'icon-size': 0.2
 }
 });
+
+map.addLayer({
+'id': 'pointsss',
+'type': 'symbol',
+'source': 'pointb', // reference the data source
+'layout': {
+'icon-image': 'cat', // reference the image
+'icon-size': 0.2
+}
+});
+
 }
 );
 
-map.on('load', () => {
-// Load an image from an external URL.
-map.loadImage(
-'chrisleelmao.png',
-(error, image) => {
-if (error) throw error;
- 
-// Add the image to the map style.
-map.addImage('chrislee', image);
- 
-// Add a data source containing one point feature.
-map.addSource('pointee', {
-'type': 'geojson',
-'data': {
-'type': 'FeatureCollection',
-'features': [
-{
-'type': 'Feature',
-'geometry': {
-'type': 'Point',
-'coordinates': [-85.16308576360044,59.225488975701666]
-}
-}
-]
-}
-});
- 
-// Add a layer to use the image to represent the data.
-map.addLayer({
-'id': 'points',
-'type': 'symbol',
-'source': 'point', // reference the data source
-'layout': {
-'icon-image': 'chrislee', // reference the image
-'icon-size': 0.25
-}
-});
-}
-);
-});
 
 
 //IGHTTTT
@@ -234,25 +220,6 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 //AIGHT
 
 
-map.on('click', 'pointss', (e) => {
-// Copy coordinates array.
-const coordinates = e.features[0].geometry.coordinates.slice();
-const description = e.features[0].properties.description;
- 
-// Ensure that if the map is zoomed out such that multiple
-// copies of the feature are visible, the popup appears
-// over the copy being pointed to.
-while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-}
- 
-new mapboxgl.Popup()
-.setLngLat(coordinates)
-.setHTML("meow")
-.addTo(map);
-});
-
-
 map.on('click', 'points', (e) => {
 // Copy coordinates array.
 const coordinates = e.features[0].geometry.coordinates.slice();
@@ -270,6 +237,43 @@ new mapboxgl.Popup()
 .setHTML("meow")
 .addTo(map);
 });
+
+
+map.on('click', 'pointss', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const description = e.features[0].properties.description;
+ 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML("meow")
+.addTo(map);
+});
+});
+
+map.on('click', 'pointsss', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const description = e.features[0].properties.description;
+ 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML("<a href='profwebsite'>Professional Site</a>")
+.addTo(map);
 });
     
     // Center the map on the coordinates of any clicked circle from the 'circle' layer.
