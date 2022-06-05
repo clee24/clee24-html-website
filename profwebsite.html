@@ -88,6 +88,8 @@
     });
 
     map.on('load', () => {
+
+      map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
 // Load an image from an external URL.
 map.loadImage(
 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
